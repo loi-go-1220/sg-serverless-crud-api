@@ -19,7 +19,8 @@ This project follows an incremental development approach:
 ## Current Status
 - [x] Project initialization
 - [x] Serverless Framework + TypeScript setup
-- [ ] CREATE book endpoint implementation
+- [x] CREATE book endpoint implementation
+- [ ] Unit tests for CREATE endpoint
 - [ ] GET books endpoints
 - [ ] UPDATE book endpoint
 - [ ] DELETE book endpoint
@@ -41,16 +42,33 @@ interface Book {
   id: string;
   title: string;
   author: string;
-  isbn?: string;
-  publishedYear?: number;
-  genre?: string;
   createdAt: string;
-  updatedAt: string;
 }
 ```
 
 ## Getting Started
-*Documentation will be updated as each endpoint is implemented*
+
+### CREATE Book Endpoint
+
+**Endpoint:** `POST /books`
+
+**Request:**
+```json
+{
+  "title": "Book Title",
+  "author": "Author Name"
+}
+```
+
+**Response:**
+```json
+{
+  "id": "uuid",
+  "title": "Book Title", 
+  "author": "Author Name",
+  "createdAt": "2025-09-23T14:30:00.000Z"
+}
+```
 
 ### Prerequisites
 - Node.js 22.17.1
