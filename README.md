@@ -20,11 +20,11 @@ This project follows an incremental development approach:
 - [x] Project initialization
 - [x] Serverless Framework + TypeScript setup
 - [x] CREATE book endpoint implementation
-- [ ] Unit tests for CREATE endpoint
+- [x] Unit tests for CREATE endpoint (6 test cases)
+- [x] CI/CD pipeline (GitHub Actions)
 - [ ] GET books endpoints
 - [ ] UPDATE book endpoint
 - [ ] DELETE book endpoint
-- [ ] CI/CD pipeline
 - [ ] Complete documentation
 
 ## API Endpoints (Planned)
@@ -82,15 +82,35 @@ npm install
 
 ### Development
 ```bash
+# Build TypeScript
+npm run build
+
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
 # Deploy to development environment
 npm run deploy:dev
 
 # Deploy to production environment
 npm run deploy:prod
-
-# Run tests
-npm test
 ```
+
+### Testing
+The CREATE endpoint has comprehensive unit tests covering:
+- ✅ Successful book creation
+- ✅ Validation errors (missing title/author)
+- ✅ Invalid JSON handling
+- ✅ DynamoDB error handling
+- ✅ Empty body handling
+
+### CI/CD Pipeline
+GitHub Actions workflow automatically:
+- ✅ Runs tests on all branches
+- ✅ Deploys to dev environment on `dev` branch push
+- ✅ Deploys to prod environment on `main` branch push
 
 ## Git Workflow
 - `main` branch: Production environment
