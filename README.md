@@ -18,7 +18,8 @@ This project follows an incremental development approach:
 
 ## Current Status
 - [x] Project initialization
-- [ ] CREATE book endpoint
+- [x] Serverless Framework + TypeScript setup
+- [ ] CREATE book endpoint implementation
 - [ ] GET books endpoints
 - [ ] UPDATE book endpoint
 - [ ] DELETE book endpoint

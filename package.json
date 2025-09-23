@@ -4,6 +4,14 @@
   "description": "A simple CRUD REST API for managing books using AWS Lambda and DynamoDB",
   "main": "src/index.js",
   "scripts": {
+    "build": "tsc",
+    "deploy": "serverless deploy",
+    "deploy:dev": "serverless deploy --stage dev",
+    "deploy:prod": "serverless deploy --stage prod",
+    "remove": "serverless remove",
+    "remove:dev": "serverless remove --stage dev",
+    "remove:prod": "serverless remove --stage prod",
+    "logs": "serverless logs -f createBook --tail",
     "test": "echo \"No tests yet\" && exit 0"
   },
   "keywords": [
@@ -19,5 +27,12 @@
   "license": "MIT",
   "engines": {
     "node": "22.17.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.152",
+    "@types/node": "^24.5.2",
+    "serverless": "^3.40.0",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.9.2"
   }
 }
