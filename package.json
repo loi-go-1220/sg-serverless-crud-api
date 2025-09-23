@@ -1,0 +1,23 @@
+{
+  "name": "book-library-api",
+  "version": "1.0.0",
+  "description": "A simple CRUD REST API for managing books using AWS Lambda and DynamoDB",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda",
+    "dynamodb",
+    "crud",
+    "typescript",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": "22.17.1"
+  }
+}
