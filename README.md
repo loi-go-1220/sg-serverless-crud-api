@@ -22,16 +22,17 @@ This project follows an incremental development approach:
 - [x] CREATE book endpoint implementation
 - [x] Unit tests for CREATE endpoint (6 test cases)
 - [x] CI/CD pipeline (GitHub Actions)
-- [ ] GET books endpoints
+- [x] GET books endpoints (list all + single book)
+- [x] Unit tests for GET endpoints (11 test cases)
 - [ ] UPDATE book endpoint
 - [ ] DELETE book endpoint
 - [ ] Complete documentation
 
-## API Endpoints (Planned)
+## API Endpoints
 ```
-POST   /books       - Create a new book
-GET    /books       - List all books
-GET    /books/{id}  - Get a specific book
+POST   /books       - Create a new book ✅
+GET    /books       - List all books ✅
+GET    /books/{id}  - Get a specific book ✅
 PUT    /books/{id}  - Update a book
 DELETE /books/{id}  - Delete a book
 ```
@@ -60,13 +61,56 @@ interface Book {
 }
 ```
 
-**Response:**
+**Response (201):**
 ```json
 {
   "id": "uuid",
   "title": "Book Title", 
   "author": "Author Name",
   "createdAt": "2025-09-23T14:30:00.000Z"
+}
+```
+
+### GET All Books Endpoint
+
+**Endpoint:** `GET /books`
+
+**Response (200):**
+```json
+[
+  {
+    "id": "uuid1",
+    "title": "Book 1",
+    "author": "Author 1",
+    "createdAt": "2025-09-23T14:30:00.000Z"
+  },
+  {
+    "id": "uuid2",
+    "title": "Book 2",
+    "author": "Author 2",
+    "createdAt": "2025-09-23T15:30:00.000Z"
+  }
+]
+```
+
+### GET Single Book Endpoint
+
+**Endpoint:** `GET /books/{id}`
+
+**Response (200):**
+```json
+{
+  "id": "uuid",
+  "title": "Book Title",
+  "author": "Author Name",
+  "createdAt": "2025-09-23T14:30:00.000Z"
+}
+```
+
+**Error Response (404):**
+```json
+{
+  "error": "Book not found"
 }
 ```
 
@@ -99,12 +143,20 @@ npm run deploy:prod
 ```
 
 ### Testing
-The CREATE endpoint has comprehensive unit tests covering:
+**Total: 17 test cases with 90% statement coverage**
+
+**CREATE Endpoint Tests (6 tests):**
 - ✅ Successful book creation
 - ✅ Validation errors (missing title/author)
 - ✅ Invalid JSON handling
 - ✅ DynamoDB error handling
 - ✅ Empty body handling
+
+**GET Endpoints Tests (11 tests):**
+- ✅ List all books (success, empty, undefined items)
+- ✅ Get single book (success, not found, missing ID)
+- ✅ DynamoDB error handling for both endpoints
+- ✅ Unknown error type handling
 
 ### CI/CD Pipeline
 GitHub Actions workflow automatically:
