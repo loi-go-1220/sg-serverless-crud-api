@@ -26,8 +26,9 @@ This project follows an incremental development approach:
 - [x] Unit tests for GET endpoints (11 test cases)
 - [x] UPDATE book endpoint (partial updates)
 - [x] Unit tests for UPDATE endpoint (12 test cases)
-- [ ] DELETE book endpoint
-- [ ] Complete documentation
+- [x] DELETE book endpoint (with existence validation)
+- [x] Unit tests for DELETE endpoint (8 test cases)
+- [x] Complete CRUD API with comprehensive testing
 
 ## API Endpoints
 ```
@@ -35,7 +36,7 @@ POST   /books       - Create a new book ✅
 GET    /books       - List all books ✅
 GET    /books/{id}  - Get a specific book ✅
 PUT    /books/{id}  - Update a book ✅
-DELETE /books/{id}  - Delete a book
+DELETE /books/{id}  - Delete a book ✅
 ```
 
 ## Book Data Model
@@ -159,6 +160,25 @@ or both:
 - **404**: Book not found
 - **500**: Server error
 
+### DELETE Book Endpoint
+
+**Endpoint:** `DELETE /books/{id}`
+
+**Request:** No body required
+
+**Response (204):** No content (successful deletion)
+
+**Error Responses:**
+- **400**: Missing ID in path parameters
+- **404**: Book not found
+- **500**: Server error
+
+**Example Usage:**
+```bash
+DELETE /books/123
+# Returns 204 No Content on success
+```
+
 ### Prerequisites
 - Node.js 22.17.1
 - AWS CLI configured
@@ -188,7 +208,7 @@ npm run deploy:prod
 ```
 
 ### Testing
-**Total: 29 test cases with 94.7% statement coverage**
+**Total: 37 test cases with 95.6% statement coverage**
 
 **CREATE Endpoint Tests (6 tests):**
 - ✅ Successful book creation
@@ -209,6 +229,15 @@ npm run deploy:prod
 - ✅ Validation: missing ID, body, invalid JSON, no valid fields
 - ✅ 404 handling for non-existent books
 - ✅ DynamoDB error handling (get and update failures)
+- ✅ Unknown error type handling
+
+**DELETE Endpoint Tests (8 tests):**
+- ✅ Successful book deletion (204 response)
+- ✅ Existence validation before deletion
+- ✅ Missing ID validation (400 error)
+- ✅ Book not found handling (404 error)
+- ✅ DynamoDB error handling (get and delete failures)
+- ✅ Various path parameter edge cases
 - ✅ Unknown error type handling
 
 ### CI/CD Pipeline

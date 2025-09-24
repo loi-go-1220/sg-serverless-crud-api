@@ -58,6 +58,14 @@ functions:
           path: books/{id}
           method: put
           cors: true
+          
+  deleteBook:
+    handler: src/handlers/deleteBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: delete
+          cors: true
 
 resources:
   Resources:
