@@ -24,7 +24,8 @@ This project follows an incremental development approach:
 - [x] CI/CD pipeline (GitHub Actions)
 - [x] GET books endpoints (list all + single book)
 - [x] Unit tests for GET endpoints (11 test cases)
-- [ ] UPDATE book endpoint
+- [x] UPDATE book endpoint (partial updates)
+- [x] Unit tests for UPDATE endpoint (12 test cases)
 - [ ] DELETE book endpoint
 - [ ] Complete documentation
 
@@ -33,7 +34,7 @@ This project follows an incremental development approach:
 POST   /books       - Create a new book ✅
 GET    /books       - List all books ✅
 GET    /books/{id}  - Get a specific book ✅
-PUT    /books/{id}  - Update a book
+PUT    /books/{id}  - Update a book ✅
 DELETE /books/{id}  - Delete a book
 ```
 
@@ -114,6 +115,50 @@ interface Book {
 }
 ```
 
+### UPDATE Book Endpoint
+
+**Endpoint:** `PUT /books/{id}`
+
+**Request (partial update):**
+```json
+{
+  "title": "Updated Title"
+}
+```
+
+or
+
+```json
+{
+  "author": "Updated Author"
+}
+```
+
+or both:
+
+```json
+{
+  "title": "New Title",
+  "author": "New Author"
+}
+```
+
+**Response (200):**
+```json
+{
+  "id": "uuid",
+  "title": "Updated Title",
+  "author": "Original Author",
+  "createdAt": "2025-09-23T14:30:00.000Z",
+  "updatedAt": "2025-09-23T16:30:00.000Z"
+}
+```
+
+**Error Responses:**
+- **400**: Missing ID, no body, invalid JSON, or no valid fields
+- **404**: Book not found
+- **500**: Server error
+
 ### Prerequisites
 - Node.js 22.17.1
 - AWS CLI configured
@@ -143,7 +188,7 @@ npm run deploy:prod
 ```
 
 ### Testing
-**Total: 17 test cases with 90% statement coverage**
+**Total: 29 test cases with 94.7% statement coverage**
 
 **CREATE Endpoint Tests (6 tests):**
 - ✅ Successful book creation
@@ -156,6 +201,14 @@ npm run deploy:prod
 - ✅ List all books (success, empty, undefined items)
 - ✅ Get single book (success, not found, missing ID)
 - ✅ DynamoDB error handling for both endpoints
+- ✅ Unknown error type handling
+
+**UPDATE Endpoint Tests (12 tests):**
+- ✅ Update title only, author only, and both fields
+- ✅ Partial updates with automatic updatedAt timestamp
+- ✅ Validation: missing ID, body, invalid JSON, no valid fields
+- ✅ 404 handling for non-existent books
+- ✅ DynamoDB error handling (get and update failures)
 - ✅ Unknown error type handling
 
 ### CI/CD Pipeline

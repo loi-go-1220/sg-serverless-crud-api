@@ -50,6 +50,14 @@ functions:
           path: books/{id}
           method: get
           cors: true
+          
+  updateBook:
+    handler: src/handlers/updateBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: put
+          cors: true
 
 resources:
   Resources:
