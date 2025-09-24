@@ -61,6 +61,8 @@ describe('createBook handler', () => {
     expect(responseBody.author).toBe('Test Author');
     expect(responseBody.id).toBeDefined();
     expect(responseBody.createdAt).toBeDefined();
+    expect(responseBody.updatedAt).toBeDefined();
+    expect(responseBody.createdAt).toBe(responseBody.updatedAt); // Should be the same for new books
 
     expect(mockSend).toHaveBeenCalledTimes(1);
   });

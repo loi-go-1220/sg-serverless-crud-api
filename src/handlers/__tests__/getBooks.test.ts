@@ -49,12 +49,14 @@ describe('getBooks handler', () => {
         title: 'Book 1',
         author: 'Author 1',
         createdAt: '2025-09-23T10:00:00.000Z',
+        updatedAt: '2025-09-23T10:00:00.000Z',
       },
       {
         id: '2',
         title: 'Book 2',
         author: 'Author 2',
         createdAt: '2025-09-23T11:00:00.000Z',
+        updatedAt: '2025-09-23T11:00:00.000Z',
       },
     ];
 

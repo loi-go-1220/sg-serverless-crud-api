@@ -46,8 +46,16 @@ interface Book {
   title: string;
   author: string;
   createdAt: string;
+  updatedAt?: string;
 }
 ```
+
+**Field Descriptions:**
+- `id`: Unique identifier (UUID) for the book
+- `title`: Book title (required)
+- `author`: Author name (required)
+- `createdAt`: ISO timestamp when the book was created
+- `updatedAt`: ISO timestamp when the book was last updated (optional, set automatically)
 
 ## Getting Started
 
@@ -67,9 +75,10 @@ interface Book {
 ```json
 {
   "id": "uuid",
-  "title": "Book Title", 
+  "title": "Book Title",
   "author": "Author Name",
-  "createdAt": "2025-09-23T14:30:00.000Z"
+  "createdAt": "2025-09-23T14:30:00.000Z",
+  "updatedAt": "2025-09-23T14:30:00.000Z"
 }
 ```
 
@@ -84,13 +93,15 @@ interface Book {
     "id": "uuid1",
     "title": "Book 1",
     "author": "Author 1",
-    "createdAt": "2025-09-23T14:30:00.000Z"
+    "createdAt": "2025-09-23T14:30:00.000Z",
+    "updatedAt": "2025-09-23T14:30:00.000Z"
   },
   {
     "id": "uuid2",
     "title": "Book 2",
     "author": "Author 2",
-    "createdAt": "2025-09-23T15:30:00.000Z"
+    "createdAt": "2025-09-23T15:30:00.000Z",
+    "updatedAt": "2025-09-23T15:30:00.000Z"
   }
 ]
 ```
@@ -105,7 +116,8 @@ interface Book {
   "id": "uuid",
   "title": "Book Title",
   "author": "Author Name",
-  "createdAt": "2025-09-23T14:30:00.000Z"
+  "createdAt": "2025-09-23T14:30:00.000Z",
+  "updatedAt": "2025-09-23T14:30:00.000Z"
 }
 ```
 

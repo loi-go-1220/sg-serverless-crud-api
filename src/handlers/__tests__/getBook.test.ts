@@ -48,6 +48,7 @@ describe('getBook handler', () => {
       title: 'Test Book',
       author: 'Test Author',
       createdAt: '2025-09-23T10:00:00.000Z',
+      updatedAt: '2025-09-23T10:00:00.000Z',
     };
 
     mockSend.mockResolvedValueOnce({ Item: mockBook });
