@@ -24,11 +24,13 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
       };
     }
     
+    const now = new Date().toISOString();
     const book: Book = {
       id: uuidv4(),
       title: body.title,
       author: body.author,
-      createdAt: new Date().toISOString(),
+      createdAt: now,
+      updatedAt: now,
     };
 
     console.log('Creating book:', book);

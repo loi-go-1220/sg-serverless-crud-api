@@ -34,6 +34,38 @@ functions:
           path: books
           method: post
           cors: true
+          
+  getBooks:
+    handler: src/handlers/getBooks.handler
+    events:
+      - http:
+          path: books
+          method: get
+          cors: true
+          
+  getBook:
+    handler: src/handlers/getBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: get
+          cors: true
+          
+  updateBook:
+    handler: src/handlers/updateBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: put
+          cors: true
+          
+  deleteBook:
+    handler: src/handlers/deleteBook.handler
+    events:
+      - http:
+          path: books/{id}
+          method: delete
+          cors: true
 
 resources:
   Resources:
